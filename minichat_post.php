@@ -26,8 +26,8 @@ $message = htmlspecialchars($_POST['message']);
 
 $req = $bdd-> prepare('INSERT INTO minichat (pseudo, message, info_date) VALUES (?, ?, NOW())');
 $req->execute(array(
-	$_POST['pseudo'],
-	$_POST['message'],
+	$pseudo,
+	$message,
 	));
 
 // Rediriger vers minichat.php
