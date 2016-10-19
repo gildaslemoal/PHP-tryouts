@@ -17,7 +17,7 @@ catch(Exception $e)
 }
 
 
-// Récupérer le message et le pseudo envoyé par minichat.php et empêcher les injections sql
+// Récupérer le message et le pseudo envoyé par minichat.php et prévenir les failles XSS
 
 $pseudo = htmlspecialchars($_POST['pseudo']);
 $message = htmlspecialchars($_POST['message']);
@@ -26,8 +26,8 @@ $message = htmlspecialchars($_POST['message']);
 
 $req = $bdd-> prepare('INSERT INTO minichat (pseudo, message, info_date) VALUES (?, ?, NOW())');
 $req->execute(array(
-	$_POST['pseudo'],
-	$_POST['message'],
+	$pseudo,
+	$message,
 	));
 
 // Rediriger vers minichat.php
